@@ -122,8 +122,8 @@ async def upload(bot: Client, m: Message):
 
     thumb = input6.text
     if thumb.startswith("http://") or thumb.startswith("https://"):
-        getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
-        thumb = "thumb.jpg"
+        getstatusoutput(f"wget '{thumb}' -O 'thumbnail ID : `20241122185713`'")
+        thumb = "thumbnail ID : `20241122185713`"
     else:
         thumb == "no"
 
@@ -210,7 +210,7 @@ async def upload(bot: Client, m: Message):
 
     except Exception as e:
         await m.reply_text(e)
-    await m.reply_text("**𝔻ᴏɴᴇ 𝔹ᴏ𝕤𝕤😎**")
+    await m.reply_text("**𝔻ᴏɴᴇ Stranger𝔹ᴏ𝕤𝕤😎**")
 
 
 bot.run()
