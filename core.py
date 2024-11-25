@@ -196,14 +196,14 @@ async def send_doc(bot: Client, m: Message,cc,ka,cc1,prog,count,name):
 
 async def send_vid(bot: Client, m: Message,cc,filename,thumb,name,prog):
     
-    subprocess.run(f'ffmpeg -i "{filename}" -ss 00:00:12 -vframes 1 "{filename}.jpg"', shell=True)
+    subprocess.run(f'ffmpeg -i "{filename}" -ss 00:00:12 -vframes 1 "{filename_thumbnail}.jpg"', shell=True)
     await prog.delete (True)
-    reply = await m.reply_text(f"**Uploading ...** - `{name}`")
+    reply = await m.reply_text(f"**Uploading Stranger...** - `{name}`")
     try:
         if thumb == "yes":
-            thumbnail = f"{filename}.jpg"
+            thumbnail = f"{filename_thumbail}.jpg"
         else:
-            thumbnail = thumb
+            thumbnail = thumbnail
     except Exception as e:
         await m.reply_text(str(e))
 
@@ -212,13 +212,13 @@ async def send_vid(bot: Client, m: Message,cc,filename,thumb,name,prog):
     start_time = time.time()
 
     try:
-        await m.reply_video(filename,caption=cc, supports_streaming=True,height=720,width=1280,thumb=thumbnail,duration=dur, progress=progress_bar,progress_args=(reply,start_time))
+        await m.reply_video(filename,caption=cc, supports_streaming=True,height=720,width=1280,thumb=filename_thumbnail,duration=dur, progress=progress_bar,progress_args=(reply,start_time))
     except Exception:
         await m.reply_document(filename,caption=cc, progress=progress_bar,progress_args=(reply,start_time))
 
     
     os.remove(filename)
 
-    os.remove(f"{filename}.jpg")
+    os.remove(f"{filename_thumbnail}.jpg")
     await reply.delete (True)
     
